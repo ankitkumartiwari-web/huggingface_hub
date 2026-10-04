@@ -271,4 +271,6 @@ As of `huggingface_hub` 0.32.0, this will also install `hf_xet`.
 
 All other `huggingface_hub` APIs will continue to work without any modification. To learn more about the benefits of Xet storage and `hf_xet`, refer to this [section](https://huggingface.co/docs/hub/xet/index).
 
+If Xet-backed downloads are slower than expected, first make sure you are running the latest `hf_xet` version. Download concurrency is managed adaptively by `hf_xet`, so the legacy `HF_XET_NUM_CONCURRENT_RANGE_GETS` environment variable is no longer used. For high-bandwidth machines, set [`HF_XET_HIGH_PERFORMANCE=1`](../package_reference/environment_variables.md#hf_xet_high_performance) to let `hf_xet` use more network and CPU resources. If throughput still looks abnormal, please [file an issue with Xet diagnostics](https://github.com/huggingface/xet-core?tab=readme-ov-file#issues-diagnostics--debugging) so the Xet team can investigate storage or CDN-level behavior.
+
 Note: `hf_transfer` was formerly used with the LFS storage backend and is now deprecated; use `hf_xet` instead.
